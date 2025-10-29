@@ -1,0 +1,11 @@
+<h1>Cambiar Contraseña</h1>
+
+<form [formGroup]="form" (submit)="cambiarClave()">
+  <label for="claveActual">Contraseña Actual:</label>
+  <input type="password" id="claveActual" formControlName="claveActual" required>
+
+  <label for="nuevaClave">Nueva Contraseña:</label>
+  <input type="password" id="nuevaClave" formControlName="nuevaClave" required>
+
+  <button type="submit">Cambiar Contraseña</button>
+</form>
