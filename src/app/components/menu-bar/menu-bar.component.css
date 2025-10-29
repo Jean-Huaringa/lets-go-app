@@ -1,0 +1,119 @@
+.menu-bar {
+    max-width: 70px;
+    height: 100vh;
+    padding: 0 15px;
+    display: grid;
+    grid-template-rows: 80px 1fr 80px;
+    transition: 1s max-width, 500ms padding;
+    box-shadow: 5px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+
+#checkbox-menu_bar:checked~.menu-bar{
+    max-width: 240px;
+    padding: 0 20px;
+}
+
+.menu-bar button, .menu-bar label{
+    transition:
+    padding 500ms ,
+    background-color 100ms ,
+    color 100ms ,
+    border 100ms ,
+    transform 200ms ,
+    box-shadow 200ms;
+}
+
+.menu-bar button:hover, .menu-header label:hover{
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transform: scale(1.05);
+}
+
+.menu-bar svg{
+    width: 20px;
+    height: 20px;
+}
+
+.menu-bar .menu-header{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.menu-header label{
+    width: 40px;
+    height: 40px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.menu-body{
+    width: 100%;
+    padding-top: 20px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.menu-body button, .menu-footer button{
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+
+#checkbox-menu_bar:checked~.menu-bar .menu-body button, 
+#checkbox-menu_bar:checked~.menu-bar .menu-footer button{
+    padding: 0px 20px;
+    justify-content: start;
+}
+
+.menu-body button span, .menu-footer button span{
+    width: 0;
+    text-align: start;
+    overflow: hidden;
+    display: block;
+    transition: 1s width, 1s padding-left;
+}
+
+#checkbox-menu_bar:checked~.menu-bar .menu-body button span, 
+#checkbox-menu_bar:checked~.menu-bar .menu-footer button span{
+    width: 130px;
+    padding-left: 10px;
+    transition-delay: 5ms;
+}
+
+.menu-body button:hover, .menu-header label:hover{
+    border: 1px solid rgb(128, 149, 255);
+    color: rgb(128, 149, 255);
+    fill: rgb(128, 149, 255);
+}
+
+.menu-body button:hover *, .menu-header label:hover *{
+    color: rgb(128, 149, 255);
+    fill: rgb(128, 149, 255);
+}
+
+.menu-body button.active{
+    background-color: rgb(128, 149, 255, 1);
+    color: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.menu-body button.active *{
+    color: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+}
+
+
+.menu-footer{
+    width: 100%;
+    padding: 20px 0; 
+}

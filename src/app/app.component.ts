@@ -1,13 +1,19 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
 import { OAuthService } from 'angular-oauth2-oidc';
 import { Router } from '@angular/router';
 import { authConfig } from './oauth/auth.config';
 import { filter } from 'rxjs/operators';
 
+import { TableComponent } from "./components/table/table.component";
+import { MenuBarComponent } from "./components/menu-bar/menu-bar.component";
+
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [MenuBarComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -32,4 +38,15 @@ export class AppComponent {
       this.router.navigate(['/auth/bienvenida']); 
     });
   }
+
+  title = 'lets-go';
+
+  columnas = ['Nombre', 'Edad', 'Ciudad'];
+  
+  data = [
+    { nombre: 'Carlos', edad: 28, ciudad: 'Lima' },
+    { nombre: 'María', edad: 32, ciudad: 'Cusco' },
+    { nombre: 'José', edad: 25, ciudad: 'Trujillo' },
+    { nombre: 'Lucía', edad: 30, ciudad: 'Arequipa' }
+  ];
 }

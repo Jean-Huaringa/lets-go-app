@@ -1,0 +1,38 @@
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th *ngFor="let col of columns">{{ col }}</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of data">
+                <td *ngFor="let col of columns">{{ item[col.toLowerCase()] }}</td>
+                <td class="acciones">
+                    <button>
+                        <svg>
+                            <use href="../icons/icon.svg#eyes-icon"></use>
+                        </svg>
+                    </button>
+                    <button>
+                        <svg>
+                            <use href="../icons/icon.svg#pencil-icon"></use>
+                        </svg>
+                    </button>
+                    <button>
+                        <svg>
+                            <use href="../icons/icon.svg#trash-icon"></use>
+                        </svg>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <button class="btn fill">+</button>
+        <button class="btn empty">1</button>
+        <button class="btn fill">-</button>
+    </div>
+</div>
