@@ -1,0 +1,54 @@
+<input type="checkbox" class="none" id="checkbox-menu_bar" hidden>
+<div class="menu-bar ">
+    <div class="menu-header">
+        <label for="checkbox-menu_bar">
+            <svg>
+                <use href="/icons/icon.svg#globe-icon"></use>
+            </svg>
+        </label>
+    </div>
+    <div class="menu-body">
+        <button class="active" routerLink="/tiendas" routerLinkActive="active">
+            <svg>
+                <use href="/icons/icon.svg#shop-icon"></use>
+            </svg>
+            <span>Tiendas</span>
+        </button>
+
+        <button routerLink="/productos" routerLinkActive="active">
+            <svg>
+                <use href="/icons/icon.svg#box-icon"></use>
+            </svg>
+            <span>Productos</span>
+        </button>
+
+        <button routerLink="/pedidos" routerLinkActive="active">
+            <svg>
+                <use href="/icons/icon.svg#box-seam-icon"></use>
+            </svg>
+            <span>Pedidos</span>
+        </button>
+
+        <button routerLink="/usuarios" routerLinkActive="active">
+            <svg>
+                <use href="/icons/icon.svg#people-icon"></use>
+            </svg>
+            <span>Usuarios</span>
+        </button>
+
+        <button routerLink="/categorias" routerLinkActive="active">
+            <svg>
+                <use href="/icons/icon.svg#grid-icon"></use>
+            </svg>
+            <span>Categorías</span>
+        </button>
+    </div>
+    <div class="menu-footer">
+        <button class="danger">
+            <svg>
+                <use href="/icons/icon.svg#door-icon"></use>
+            </svg>
+            <span>Cerrar sesión</span>
+        </button>
+    </div>
+</div>

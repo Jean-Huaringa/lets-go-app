@@ -1,1 +1,134 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: rgba(81, 81, 81, 1);
+    fill: rgba(81, 81, 81, 1);
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+button {
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0);
+}
+
+button svg{
+    width: 16px;
+    height: 16px;
+    fill: rgb(128, 149, 255);
+    color: rgb(128, 149, 255);
+}
+
+button:hover svg{
+    fill: rgb(128, 149, 255);
+    color: rgb(128, 149, 255);
+}
+
+input {
+    outline: none;
+    border: 1px solid rgb(128, 149, 255);
+    color: rgb(92, 92, 92);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input::placeholder {
+    color: rgb(128, 149, 255);
+}
+
+.btn {
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition:
+        padding 500ms,
+        background-color 100ms,
+        color 100ms,
+        border 100ms,
+        transform 200ms,
+        box-shadow 200ms;
+}
+
+.btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.btn.empty {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(128, 149, 255);
+    color: rgb(128, 149, 255);
+    fill: rgb(128, 149, 255);
+}
+
+.btn.empty * {
+    color: rgb(128, 149, 255);
+    fill: rgb(128, 149, 255);
+}
+
+.btn.empty:hover {
+    background-color: rgb(128, 149, 255, 1);
+    border: 1px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+}
+
+.btn.empty:hover * {
+    color: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+}
+
+.btn.fill {
+    background-color: rgb(128, 149, 255, 1);
+    border: 1px solid rgb(128, 149, 255);
+    color: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+}
+
+.btn.fill * {
+    color: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+}
+
+.btn.fill:hover {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(128, 149, 255);
+    color: rgb(128, 149, 255);
+    fill: rgb(128, 149, 255);
+}
+
+.btn.fill:hover * {
+    color: rgb(128, 149, 255);
+    fill: rgb(128, 149, 255);
+}
+
+.danger {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 109, 109);
+    color: rgb(255, 109, 109);
+    fill: rgb(255, 109, 109);
+}
+
+.danger * {
+    color: rgb(255, 109, 109);
+    fill: rgb(255, 109, 109);
+}
+
+.danger:hover {
+    background-color: rgb(255, 109, 109);
+    border: 1px solid rgb(255, 109, 109);
+    color: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+}
+
+.danger:hover * {
+    color: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+}
+
+li {
+    list-style: none;
+}
