@@ -20,9 +20,22 @@ export const routes: Routes = [
     path: 'productos',
     loadChildren: () => import('./components/product/product-list/producto.routes').then(m => m.routes)
   },
+  {
+    path: 'tiendas',
+    loadChildren: () => import('./components/product/store-list/store.routes').then(m => m.routes)
+  },
+  {
+    path: 'categorias',
+    loadChildren: () => import('./components/product/category-list/category.routes').then(m => m.routes)
+  },
+   {
+    path: 'usuarios',
+    loadChildren: () => import('./components/product/user-list/user.routes').then(m => m.routes)
+  },
 
-  { path: 'tiendas', component: StorePageComponent },
+
+
   { path: 'pedidos', component: OrdersPageComponent },
-  { path: 'categorias', component: CategoryPageComponent },
+
   { path: '**', redirectTo: '' }
 ];

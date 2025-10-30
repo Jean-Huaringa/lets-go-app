@@ -11,8 +11,8 @@ export class TiendaService {
   private apiUrl = 'http://localhost:8080/store-app/api';
   private http = inject(HttpClient);
 
-  obtenerTiendas(): Observable<SuccessResponse<PaginacionResponse<TiendaDTO>>> {
-    return this.http.get<SuccessResponse<PaginacionResponse<TiendaDTO>>>(`${this.apiUrl}/tienda`);
+  obtenerTiendas(): Observable<SuccessResponse<TiendaDTO[]>> {
+    return this.http.get<SuccessResponse<TiendaDTO[]>>(`${this.apiUrl}/tienda`);
   }
 
   obtenerTiendasActivas(): Observable<SuccessResponse<PaginacionResponse<TiendaDTO>>> {

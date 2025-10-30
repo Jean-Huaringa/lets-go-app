@@ -1,18 +1,13 @@
-<app-product-form
-  *ngIf="showForm"
-  [product]="selectedProduct"
-  (save)="handleSave($event)"
-  (close)="showForm = false">
-</app-product-form>
-
 <div class="cont">
-  <div *ngIf="cargando">Cargando productos...</div>
+  <div *ngIf="cargando">Cargando categorías...</div>
   <div *ngIf="error" class="error">{{ error }}</div>
+
   <div class="content-options">
     <input type="checkbox" class="none" id="checkbox-options_content" hidden>
     <div class="options-header">
-      <h2>Productos</h2>
+      <h2>Categorías</h2>
     </div>
+
     <div class="options-bar">
       <label class="btn empty btn-filter" for="checkbox-options_content">
         <svg>
@@ -20,14 +15,15 @@
         </svg>
         Filtros
       </label>
-      <input type="text" placeholder="Buscar" />
-      <button class="btn fill" (click)="openForm()">
+      <input type="text" placeholder="Buscar categoría..." />
+      <button class="btn fill">
         <svg>
           <use href="../icons/icon.svg#plus-icon"></use>
         </svg>
         Agregar
       </button>
     </div>
+
     <div class="options-content">
       <div class="filters">
         <div class="content-filter">
@@ -40,55 +36,42 @@
           <div class="filter">
             <ul class="options-filter">
               <li>
-                <label for="filter-1">
-                  <input type="checkbox" id="filter-1" />
-                  <span>Filtro 1</span>
+                <label for="filter-activo">
+                  <input type="checkbox" id="filter-activo" />
+                  <span>Activas</span>
                 </label>
               </li>
               <li>
-                <label for="filter-2">
-                  <input type="checkbox" id="filter-2" />
-                  <span>Filtro 1</span>
-                </label>
-              </li>
-              <li>
-                <label for="filter-3">
-                  <input type="checkbox" id="filter-3" />
-                  <span>Filtro 1</span>
+                <label for="filter-inactivo">
+                  <input type="checkbox" id="filter-inactivo" />
+                  <span>Inactivas</span>
                 </label>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <button class="btn empty">
-        Filtrar
-      </button>
+      <button class="btn empty">Filtrar</button>
     </div>
   </div>
+
   <div class="table-container">
     <table>
       <thead>
         <tr>
-          <th>Id</th>
+          <th>ID</th>
           <th>Nombre</th>
-          <th>Descripcion</th>
-          <th>Material</th>
-          <th>Precio</th>
-
-
-
+          <th>Estado</th>
           <th>Opciones</th>
         </tr>
       </thead>
-      <tbody>
 
-        <tr *ngFor="let producto of productos">
-          <td>{{ producto.id }}</td>
-          <td>{{ producto.nombre }}</td>
-          <td>{{ producto.descripcion }}</td>
-          <td>{{ producto.material }}</td>
-          <td>{{ producto.precio | currency:'PEN' }}</td>
+      <tbody>
+        <tr *ngFor="let categoria of categorias">
+          <td>{{ categoria.id }}</td>
+          <td>{{ categoria.nombre }}</td>
+          <td><input type="checkbox" [(ngModel)]="categoria.isEnabled"></td>
+          
           <td class="acciones">
             <button>
               <svg>
@@ -107,8 +90,6 @@
             </button>
           </td>
         </tr>
-
-
       </tbody>
     </table>
 
