@@ -1,0 +1,23 @@
+.user-list {
+  padding: 20px;
+}
+
+.usuario-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: center;
+  width: 300px;
+  display: inline-block;
+}
+
+.loading-message, .error-message {
+  text-align: center;
+  font-size: 18px;
+  color: #f00;
+}
+
+.usuario-item h3 {
+  font-size: 20px;
+  margin: 10px 0;
+}

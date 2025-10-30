@@ -1,0 +1,28 @@
+<div class="user-list">
+  <h2>Listado de Usuarios</h2>
+  
+  <!-- Si hay un error, mostrarlo -->
+  <div *ngIf="error" class="error-message">
+    <p>{{ error }}</p>
+  </div>
+
+  <!-- Si la aplicación está cargando, mostrar mensaje de carga -->
+  <div *ngIf="cargando" class="loading-message">
+    <p>Cargando usuarios...</p>
+  </div>
+
+  <!-- Mostrar los usuarios -->
+  <div *ngIf="!cargando && !error" class="usuario">
+    <div *ngFor="let usuario of usuarios" class="usuario-item">
+      <h3>{{ usuario.nombre }} {{ usuario.apellido }}</h3>
+      <p>Email: {{ usuario.email }}</p>
+      <p>Teléfono: {{ usuario.telefono }}</p>
+      <p>Tipo de Documento: {{ usuario.tipoDocumento }}</p>
+      <p>Número de Documento: {{ usuario.nmrDocumento }}</p>
+      <p>Provincia: {{ usuario.provincia }}</p>
+      <p>Distrito: {{ usuario.distrito }}</p>
+      <p *ngIf="usuario.isEnabled">Estado: Activo</p>
+      <p *ngIf="!usuario.isEnabled">Estado: Inactivo</p>
+    </div>
+  </div>
+</div>

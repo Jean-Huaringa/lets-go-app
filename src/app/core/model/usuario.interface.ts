@@ -11,6 +11,7 @@ export interface UsuarioDTO {
   departamento: string;
   provincia: string;
   distrito: string;  
+  isEnabled: boolean; 
 }
 
 export interface UsuarioCreacionDTO {

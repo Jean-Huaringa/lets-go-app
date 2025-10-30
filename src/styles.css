@@ -1,1 +1,343 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: rgba(81, 81, 81, 1);
+    fill: rgba(81, 81, 81, 1);
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.cont{
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0);
+}
+
+button svg{
+    width: 16px;
+    height: 16px;
+    fill: rgb(128, 149, 255);
+    color: rgb(128, 149, 255);
+}
+
+button:hover svg{
+    fill: rgb(128, 149, 255);
+    color: rgb(128, 149, 255);
+}
+
+input {
+    outline: none;
+    border: 1px solid rgb(128, 149, 255);
+    color: rgb(92, 92, 92);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input::placeholder {
+    color: rgb(128, 149, 255);
+}
+
+.btn {
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition:
+        padding 500ms,
+        background-color 100ms,
+        color 100ms,
+        border 100ms,
+        transform 200ms,
+        box-shadow 200ms;
+}
+
+.btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.btn.empty {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(128, 149, 255);
+    color: rgb(128, 149, 255);
+    fill: rgb(128, 149, 255);
+}
+
+.btn.empty * {
+    color: rgb(128, 149, 255);
+    fill: rgb(128, 149, 255);
+}
+
+.btn.empty:hover {
+    background-color: rgb(128, 149, 255, 1);
+    border: 1px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+}
+
+.btn.empty:hover * {
+    color: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+}
+
+.btn.fill {
+    background-color: rgb(128, 149, 255, 1);
+    border: 1px solid rgb(128, 149, 255);
+    color: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+}
+
+.btn.fill * {
+    color: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+}
+
+.btn.fill:hover {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(128, 149, 255);
+    color: rgb(128, 149, 255);
+    fill: rgb(128, 149, 255);
+}
+
+.btn.fill:hover * {
+    color: rgb(128, 149, 255);
+    fill: rgb(128, 149, 255);
+}
+
+.danger {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 109, 109);
+    color: rgb(255, 109, 109);
+    fill: rgb(255, 109, 109);
+}
+
+.danger * {
+    color: rgb(255, 109, 109);
+    fill: rgb(255, 109, 109);
+}
+
+.danger:hover {
+    background-color: rgb(255, 109, 109);
+    border: 1px solid rgb(255, 109, 109);
+    color: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+}
+
+.danger:hover * {
+    color: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+}
+
+li {
+    list-style: none;
+}
+
+
+
+
+/*************************************************************/
+/*************************************************************/
+/*************************************************************/
+/*************************************************************/
+
+
+.content-options {
+    margin: 20px 0;
+    padding: 20px 0;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+}
+
+.options-bar {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 20px;
+}
+
+input {
+    padding: 12px 25px;
+    border-radius: 50px;
+}
+
+input::placeholder {
+    color: rgb(128, 149, 255);
+}
+
+.content-options .btn {
+    border-radius: 50px;
+    padding: 8px 35px;
+}
+
+.options-content {
+    width: 100%;
+    max-height: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    overflow: hidden;
+    transition: 500ms max-height;
+}
+
+#checkbox-options_content:checked ~ .options-content {
+  max-height: 200px;
+  animation: mostrarOverflow 0s linear 100ms forwards;
+}
+
+@keyframes mostrarOverflow {
+  to {
+    overflow: visible;
+  }
+}
+
+.options-content .filters {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    direction: rtl;
+    width: 100%;
+}
+
+.options-content>button {
+    padding: 8px 50px !important;
+}
+
+#checkbox-options_content:checked~.options-bar .btn-filter {
+    background-color: rgb(128, 149, 255, 1);
+    border: 1px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+}
+
+#checkbox-options_content:checked~.options-bar .btn-filter:hover {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(128, 149, 255);
+    color: rgb(128, 149, 255);
+    fill: rgb(128, 149, 255);
+}
+
+#checkbox-options_content:checked~.options-bar .btn-filter * {
+    color: rgb(255, 255, 255);
+    fill: rgb(255, 255, 255);
+}
+
+
+#checkbox-options_content:checked~.options-bar .btn-filter:hover * {
+    color: rgb(128, 149, 255);
+    fill: rgb(128, 149, 255);
+}
+
+.content-filter {
+    position: relative;
+}
+
+.content-filter label {
+    position: relative;
+    z-index: 1;
+}
+
+.filter{
+    width: 100%;
+    bottom: 0;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    transition: 500ms all;
+    z-index: 0;
+    padding-top: 5px;
+}
+
+
+.options-filter {
+    display: grid;
+    direction: ltr;
+    gap: 10px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+.options-filter li{
+    width: 100%;
+}
+
+.options-filter li label{
+    width: 100%;
+    font-size: 15px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 15px 1fr;
+}
+
+.content-filter:hover .filter {
+    background-color: rgb(255, 255, 255);
+    transform: translateY(100%);
+    opacity: 1;
+    visibility: visible;
+}
+
+.options-filter label:hover span{
+    color: rgb(128, 149, 255);
+}
+
+/****************************************************************************************************************************/
+
+
+.table-container {
+  width: 100%;
+  max-width: 2500px;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+
+thead {
+  background: rgb(245, 245, 245);
+}
+
+
+tbody tr:nth-child(even) {
+  background: rgb(245, 245, 245);
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgb(255, 255, 255);
+  font-size: 16px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: end;
+  gap: 2px;
+  padding: 16px;
+}
+
+.pagination > *{
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+
