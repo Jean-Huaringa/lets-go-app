@@ -1,0 +1,17 @@
+<div class="container">
+  <h2 class="titulo">{{ product ? 'Editar Producto' : 'Nuevo Producto' }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-grid">
+      <input type="text" formControlName="nombre" placeholder="Nombre">
+      <input type="text" formControlName="material" placeholder="Material">
+      <textarea formControlName="descripcion" placeholder="Descripción"></textarea>
+      <input type="number" formControlName="precio" placeholder="Precio">
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn fill">{{ product ? 'Actualizar' : 'Agregar' }}</button>
+      <button type="button" class="btn empty" (click)="onClose()">Cancelar</button>
+    </div>
+  </form>
+</div>
