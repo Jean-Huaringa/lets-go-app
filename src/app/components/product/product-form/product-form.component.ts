@@ -1,8 +1,11 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-form',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './product-form.component.html',
 })
 export class ProductFormComponent implements OnChanges {
@@ -14,15 +17,22 @@ export class ProductFormComponent implements OnChanges {
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      name: ['', Validators.required],
-      price: [0, [Validators.required, Validators.min(0)]],
-      description: ['']
+      nombre: ['', Validators.required],
+      descripcion: [''],
+      material: [''],
+      precio: [0, [Validators.required, Validators.min(0)]]
     });
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['product'] && this.product) {
-      this.form.patchValue(this.product);
+    if (changes['product']) {
+      
+      this.form.patchValue({
+        nombre: this.product?.nombre || '',
+        descripcion: this.product?.descripcion || '',
+        material: this.product?.material || '',
+        precio: this.product?.precio || 0
+      });
     }
   }
 

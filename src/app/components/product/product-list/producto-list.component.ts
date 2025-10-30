@@ -3,6 +3,7 @@ import { ProductoService } from '../../../core/services/producto.service';
 import { ProductoDTO } from '../../../core/model/producto.interface';
 import { CommonModule } from '@angular/common';
 import { ProductFormComponent } from '../product-form/product-form.component';
+
 @Component({
   selector: 'app-producto-list',
   standalone: true,
@@ -15,7 +16,10 @@ export class ProductoListComponent implements OnInit {
   cargando = true;
   error = '';
 
-  constructor(private productoService: ProductoService) { }
+  selectedProduct: ProductoDTO | null = null;
+  showForm = false;
+
+  constructor(private productoService: ProductoService) {}
 
   ngOnInit(): void {
     this.listarProductos();
@@ -24,9 +28,7 @@ export class ProductoListComponent implements OnInit {
   listarProductos(): void {
     this.cargando = true;
     this.productoService.obtenerProductos().subscribe({
-
       next: (res) => {
-        console.log(res)
         this.productos = res.response?.content || [];
         this.cargando = false;
       },
@@ -37,21 +39,47 @@ export class ProductoListComponent implements OnInit {
       }
     });
   }
-  // products.component.ts
-  selectedProduct: any = null;
-  showForm = false;
 
-  openForm(product: any = null) {
+  openForm(product: ProductoDTO | null = null) {
     this.selectedProduct = product;
     this.showForm = true;
   }
 
   handleSave(productData: any) {
     if (this.selectedProduct) {
-      // actualizar producto
-    } else {
-      // crear producto
+   
+      this.productoService.actualizarProducto(this.selectedProduct.id, productData).subscribe({
+        next: () => {
+          this.listarProductos();   
+          this.showForm = false;      
+          this.selectedProduct = null; 
+        },
+        error: (err) => console.error('Error al actualizar producto', err)
+      });
+
+      this.productoService.crearProducto(productData).subscribe({
+        next: () => {
+          this.listarProductos();      
+          this.showForm = false;       
+        },
+        error: (err) => console.error('Error al crear producto', err)
+      });
     }
-    this.showForm = false;
   }
+
+ eliminarProducto(id: number): void {
+  if (confirm('¿Seguro que deseas eliminar este producto?')) {
+    this.productoService.eliminarProducto(id).subscribe({
+      next: (res) => {
+        console.log('Producto eliminado con éxito:', res);
+        this.listarProductos();
+      },
+      error: (err) => {
+        console.error('Error al eliminar producto:', err);
+        alert('Hubo un error al eliminar el producto.');
+      }
+    });
+  }
+}
+
 }

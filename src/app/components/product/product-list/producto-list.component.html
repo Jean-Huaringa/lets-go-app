@@ -8,11 +8,14 @@
 <div class="cont">
   <div *ngIf="cargando">Cargando productos...</div>
   <div *ngIf="error" class="error">{{ error }}</div>
+
   <div class="content-options">
     <input type="checkbox" class="none" id="checkbox-options_content" hidden>
+
     <div class="options-header">
       <h2>Productos</h2>
     </div>
+
     <div class="options-bar">
       <label class="btn empty btn-filter" for="checkbox-options_content">
         <svg>
@@ -20,6 +23,7 @@
         </svg>
         Filtros
       </label>
+
       <input type="text" placeholder="Buscar" />
       <button class="btn fill" (click)="openForm()">
         <svg>
@@ -28,6 +32,7 @@
         Agregar
       </button>
     </div>
+
     <div class="options-content">
       <div class="filters">
         <div class="content-filter">
@@ -48,24 +53,23 @@
               <li>
                 <label for="filter-2">
                   <input type="checkbox" id="filter-2" />
-                  <span>Filtro 1</span>
+                  <span>Filtro 2</span>
                 </label>
               </li>
               <li>
                 <label for="filter-3">
                   <input type="checkbox" id="filter-3" />
-                  <span>Filtro 1</span>
+                  <span>Filtro 3</span>
                 </label>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <button class="btn empty">
-        Filtrar
-      </button>
+      <button class="btn empty">Filtrar</button>
     </div>
   </div>
+
   <div class="table-container">
     <table>
       <thead>
@@ -75,14 +79,10 @@
           <th>Descripcion</th>
           <th>Material</th>
           <th>Precio</th>
-
-
-
           <th>Opciones</th>
         </tr>
       </thead>
       <tbody>
-
         <tr *ngFor="let producto of productos">
           <td>{{ producto.id }}</td>
           <td>{{ producto.nombre }}</td>
@@ -90,25 +90,29 @@
           <td>{{ producto.material }}</td>
           <td>{{ producto.precio | currency:'PEN' }}</td>
           <td class="acciones">
-            <button>
+       
+            <button title="Ver">
               <svg>
                 <use href="../icons/icon.svg#eyes-icon"></use>
               </svg>
             </button>
-            <button>
+
+          
+            <button title="Editar" (click)="openForm(producto)">
               <svg>
                 <use href="../icons/icon.svg#pencil-icon"></use>
               </svg>
             </button>
-            <button>
-              <svg>
-                <use href="../icons/icon.svg#trash-icon"></use>
-              </svg>
-            </button>
+
+       
+           <button title="Eliminar" (click)="eliminarProducto(producto.id)">
+  <svg>
+    <use href="../icons/icon.svg#trash-icon"></use>
+  </svg>
+</button>
+
           </td>
         </tr>
-
-
       </tbody>
     </table>
 

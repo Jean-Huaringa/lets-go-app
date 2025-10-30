@@ -1,31 +1,17 @@
-<!-- Modal -->
-<div class="modal show d-block" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">{{ product ? 'Editar Producto' : 'Nuevo Producto' }}</h5>
-        <button type="button" class="btn-close" (click)="onClose()"></button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
-          <div class="mb-3">
-            <label class="form-label">Nombre</label>
-            <input formControlName="name" type="text" class="form-control">
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Precio</label>
-            <input formControlName="price" type="number" class="form-control">
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Descripción</label>
-            <textarea formControlName="description" class="form-control"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Guardar</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="container">
+  <h2 class="titulo">{{ product ? 'Editar Producto' : 'Nuevo Producto' }}</h2>
 
-<!-- Fondo modal -->
-<div class="modal-backdrop show"></div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-grid">
+      <input type="text" formControlName="nombre" placeholder="Nombre">
+      <input type="text" formControlName="material" placeholder="Material">
+      <textarea formControlName="descripcion" placeholder="Descripción"></textarea>
+      <input type="number" formControlName="precio" placeholder="Precio">
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn fill">{{ product ? 'Actualizar' : 'Agregar' }}</button>
+      <button type="button" class="btn empty" (click)="onClose()">Cancelar</button>
+    </div>
+  </form>
+</div>
