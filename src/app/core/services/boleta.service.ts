@@ -27,7 +27,7 @@ export class BoletaService {
     return this.http.get<SuccessResponse<PaginacionResponse<BoletaDTO>>>(`${this.apiUrl}/boletas/cliente/${clienteId}`);
   }
 
-  crearBoleta(boleta: BoletaCreacionDTO): Observable<SuccessResponse<BoletaDTO>> {
-    return this.http.post<SuccessResponse<BoletaDTO>>(`${this.apiUrl}/boletas`, boleta);
+  crearBoleta(boleta: BoletaCreacionDTO): Observable<SuccessResponse<String>> {
+    return this.http.post<SuccessResponse<String>>(`${this.apiUrl}/boletas`, boleta);
   }
 }

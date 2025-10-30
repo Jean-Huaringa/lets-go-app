@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { RouterLink } from '@angular/router';
 import { TrabajadorService } from '../../core/services/trabajador.service';
+import { ProductoService } from '../../core/services/producto.service';
 
 @Component({
   selector: 'app-landing',
@@ -14,15 +15,15 @@ export class LandingComponent implements OnInit {
 
   // servicios de prueba
   private trabajadorService = inject(TrabajadorService);
+  private productoService = inject(ProductoService);
 
   ngOnInit(): void {
-    this.trabajadorService.obtenerTrabajadores().subscribe({
-      next: (response) => {
-        console.log('Trabajadores:', response);
-      },
-      error: (error) => {
-        console.error('Error al obtener trabajadores:', error);
-      }
+    this.productoService.obtenerProductos().subscribe(productos => {
+      console.log('Productos obtenidos:', productos);
+    });
+
+    this.trabajadorService.obtenerTrabajadores().subscribe(trabajadores => {
+      console.log('Trabajadores obtenidos:', trabajadores);
     });
   }
 
