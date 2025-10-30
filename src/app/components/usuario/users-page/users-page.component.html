@@ -2,7 +2,7 @@
     <div class="content-options">
         <input type="checkbox" class="none" id="checkbox-options_content" hidden>
         <div class="options-header">
-            <h2>Usarios</h2>
+            <h2>Usuarios</h2>
         </div>
         <div class="options-bar">
             <label class="btn empty btn-filter" for="checkbox-options_content">
@@ -12,7 +12,7 @@
                 Filtros
             </label>
             <input type="text" placeholder="Buscar" />
-            <button class="btn fill">
+            <button routerLink="/usuarios/crear" class="btn fill">
                 <svg>
                     <use href="../icons/icon.svg#plus-icon"></use>
                 </svg>
@@ -57,6 +57,20 @@
             </button>
         </div>
     </div>
-    <app-table [columns]= columnas [data]=data></app-table>
+    @if (!loading) {
+        <app-table 
+            [columns]="columnas" 
+            [data]="data" 
+            [enablePagination]="true" 
+            [currentPage]="currentPage" 
+            [totalPages]="totalPages" 
+            [pageSize]="pageSize" 
+            [totalElements]="totalElements" 
+            (onPageChange)="cambiarPagina($event)"
+            [sePuedeEditar]="false">
+        </app-table>
+    } @else {
+        <h2>Cargando...</h2>
+    }
 </div>
 

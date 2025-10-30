@@ -15,8 +15,8 @@ export class ProductoService {
     return this.http.get<SuccessResponse<PaginacionResponse<ProductoDTO>>>(`${this.apiUrl}/productos`);
   }
 
-  obtenerProductosActivos(): Observable<SuccessResponse<PaginacionResponse<ProductoDTO>>> {
-    return this.http.get<SuccessResponse<PaginacionResponse<ProductoDTO>>>(`${this.apiUrl}/productos/activos`);
+  obtenerProductosActivos(paginacion: string): Observable<SuccessResponse<PaginacionResponse<ProductoDTO>>> {
+    return this.http.get<SuccessResponse<PaginacionResponse<ProductoDTO>>>(`${this.apiUrl}/productos/activos?${paginacion}`);
   }
 
   obtenerProductoPorId(id: number): Observable<SuccessResponse<ProductoDTO>> {

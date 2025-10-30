@@ -5,6 +5,9 @@
 	max-width: 1200px;
 	text-align: center;
 	height: 80vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 h1 {

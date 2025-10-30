@@ -6,7 +6,7 @@ import { ProductoService } from '../../core/services/producto.service';
 
 @Component({
   selector: 'app-landing',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.css']
 })

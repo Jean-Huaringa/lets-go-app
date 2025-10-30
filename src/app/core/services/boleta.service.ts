@@ -11,8 +11,10 @@ export class BoletaService {
   private apiUrl = 'http://localhost:8080/order-app/api';
   private http = inject(HttpClient);
 
-  obtenerBoletas(): Observable<SuccessResponse<PaginacionResponse<BoletaDTO>>> {
-    return this.http.get<SuccessResponse<PaginacionResponse<BoletaDTO>>>(`${this.apiUrl}/boletas`);
+  obtenerBoletas(page: number = 0, size: number = 10): Observable<SuccessResponse<PaginacionResponse<BoletaDTO>>> {
+    return this.http.get<SuccessResponse<PaginacionResponse<BoletaDTO>>>(
+      `${this.apiUrl}/boletas?page=${page}&size=${size}`
+    );
   }
 
   obtenerBoletaPorId(id: number): Observable<SuccessResponse<BoletaDTO>> {
@@ -27,7 +29,7 @@ export class BoletaService {
     return this.http.get<SuccessResponse<PaginacionResponse<BoletaDTO>>>(`${this.apiUrl}/boletas/cliente/${clienteId}`);
   }
 
-  crearBoleta(boleta: BoletaCreacionDTO): Observable<SuccessResponse<String>> {
-    return this.http.post<SuccessResponse<String>>(`${this.apiUrl}/boletas`, boleta);
+  crearBoleta(boleta: BoletaCreacionDTO): Observable<SuccessResponse<string>> {
+    return this.http.post<SuccessResponse<string>>(`${this.apiUrl}/boletas`, boleta);
   }
 }

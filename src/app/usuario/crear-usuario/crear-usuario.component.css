@@ -1,6 +1,0 @@
-:host { display: block; }
-
-.card-title { font-weight: 600; }
-
-/* Make inputs a bit taller for touch devices */
-input.form-control { padding: .6rem .75rem; }

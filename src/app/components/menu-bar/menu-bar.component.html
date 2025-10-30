@@ -22,11 +22,11 @@
             <span>Productos</span>
         </button>
 
-        <button routerLink="/pedidos" routerLinkActive="active">
+        <button routerLink="/boletas" routerLinkActive="active">
             <svg>
                 <use href="/icons/icon.svg#box-seam-icon"></use>
             </svg>
-            <span>Pedidos</span>
+            <span>Boletas</span>
         </button>
 
         <button routerLink="/usuarios" routerLinkActive="active">
@@ -44,7 +44,7 @@
         </button>
     </div>
     <div class="menu-footer">
-        <button class="danger">
+        <button class="danger" (click)="logout()">
             <svg>
                 <use href="/icons/icon.svg#door-icon"></use>
             </svg>

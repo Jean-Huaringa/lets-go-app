@@ -12,7 +12,7 @@ export class PaisService {
   private http = inject(HttpClient);
 
   obtenerPaises(): Observable<SuccessResponse<PaginacionResponse<PaisDTO>>> {
-    return this.http.get<SuccessResponse<PaginacionResponse<PaisDTO>>>(`${this.apiUrl}/paises`);
+    return this.http.get<SuccessResponse<PaginacionResponse<PaisDTO>>>(`${this.apiUrl}/paises?page=0&size=100`);
   }
 
   obtenerPaisesActivos(): Observable<SuccessResponse<PaginacionResponse<PaisDTO>>> {
