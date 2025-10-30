@@ -8,7 +8,7 @@ import { ProductoService } from '../../core/services/producto.service';
   selector: 'app-landing',
   imports: [RouterLink],
   templateUrl: './landing.component.html',
-  styleUrl: './landing.component.css'
+  styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements OnInit {
   private oauthService = inject(OAuthService);

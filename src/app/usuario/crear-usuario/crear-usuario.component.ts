@@ -8,7 +8,7 @@ import { UsuarioService } from '../../core/services/usuario.service';
   selector: 'app-crear-usuario',
   imports: [ReactiveFormsModule],
   templateUrl: './crear-usuario.component.html',
-  styleUrl: './crear-usuario.component.css'
+  styleUrls: ['./crear-usuario.component.css']
 })
 export class CrearUsuarioComponent {
   private fb = inject(FormBuilder);
