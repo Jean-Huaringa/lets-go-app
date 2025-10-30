@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, Inject, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsuarioService } from '../../../core/services/usuario.service';
 import { UsuarioCreacionDTO } from '../../../oauth/auth.interface';
@@ -13,6 +13,7 @@ import { DepartamentoDTO } from '../../../core/model/departamento.interface';
 import { ProvinciaDTO } from '../../../core/model/provincia.interface';
 import { DistritoDTO } from '../../../core/model/distrito.interface';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-usuario',
@@ -31,6 +32,7 @@ export class CrearUsuarioComponent implements OnInit {
   private departamentoService = inject(DepartamentoService);
   private provinciaService = inject(ProvinciaService);
   private distritoService = inject(DistritoService);
+  private router = inject(Router);
 
   roles: RolDTO[] = [];
   paises: PaisDTO[] = [];
@@ -140,6 +142,7 @@ export class CrearUsuarioComponent implements OnInit {
     this.usuarioService.crearUsuario(usuario).subscribe({
       next: (response) => {
         console.log('Usuario creado con éxito:', response);
+        this.router.navigate(['/usuarios']);
       },
       error: (error) => {
         console.error('Error al crear el usuario:', error);

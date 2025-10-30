@@ -15,8 +15,8 @@ export class TiendaService {
     return this.http.get<SuccessResponse<TiendaDTO[]>>(`${this.apiUrl}/tienda`);
   }
 
-  obtenerTiendasActivas(): Observable<SuccessResponse<PaginacionResponse<TiendaDTO>>> {
-    return this.http.get<SuccessResponse<PaginacionResponse<TiendaDTO>>>(`${this.apiUrl}/tienda/activos`);
+  obtenerTiendasActivas(): Observable<SuccessResponse<TiendaDTO[]>> {
+    return this.http.get<SuccessResponse<TiendaDTO[]>>(`${this.apiUrl}/tienda/activos`);
   }
 
   obtenerTiendaPorId(id: number): Observable<SuccessResponse<TiendaDTO>> {
