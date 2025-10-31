@@ -13,16 +13,18 @@ export interface TiendaDTO {
 }
 
 export interface TiendaCreacionDTO {
-  id: number;
   rutaImagen: string;
   nombre: string;
   nombreLegal: string;
   direccion: string;
   ruc: string;
-  paisId: number;
-  departamentoId: number;
-  provinciaId: number;
-  distritoId: number;
+  ubicacion: string;
+  telefono: string;
+  mail: string;
+  idPais: number;
+  idDepartamento: number;
+  idProvincia: number;
+  idDistrito: number;
 }
 
 export interface TiendaActualizarDTO {
@@ -32,9 +34,12 @@ export interface TiendaActualizarDTO {
   nombreLegal: string;
   direccion: string;
   ruc: string;
-  paisId: number;
-  departamentoId: number;
-  provinciaId: number;
-  distritoId: number;
+  ubicacion: string;
+  telefono: string;
+  mail: string;
+  idPais: number;
+  idDepartamento: number;
+  idProvincia: number;
+  idDistrito: number;
   isEnabled: boolean;
 }

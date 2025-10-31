@@ -18,6 +18,7 @@ export class TableComponent {
   @Input() totalElements: number = 0;
 
   @Input() sePuedeEditar: boolean = true;
+  @Input() sePuedeEliminar: boolean = true;
 
   @Output() onPageChange = new EventEmitter<number>();
 

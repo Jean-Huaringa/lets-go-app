@@ -22,11 +22,13 @@
                             </svg>
                         </button>
                     }
-                    <button>
-                        <svg>
-                            <use href="../icons/icon.svg#trash-icon"></use>
-                        </svg>
-                    </button>
+                    @if(sePuedeEliminar) {
+                        <button>
+                            <svg>
+                                <use href="../icons/icon.svg#trash-icon"></use>
+                            </svg>
+                        </button>
+                    }
                 </td>
             </tr>
         </tbody>

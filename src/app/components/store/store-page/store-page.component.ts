@@ -3,17 +3,18 @@ import { TableComponent } from "../../table/table.component";
 import { TiendaService } from '../../../core/services/tienda.service';
 import { TiendaDTO } from '../../../core/model/tienda.interface';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-store-page',
-  imports: [TableComponent, CommonModule],
+  imports: [TableComponent, CommonModule, RouterLink],
   templateUrl: './store-page.component.html',
   styleUrl: './store-page.component.css'
 })
 export class StorePageComponent implements OnInit {
   private tiendaService = inject(TiendaService);
 
-  columnas = ['Nombre', 'Ruta Imagen', 'Direccion', 'RUC'];
+  columnas = ['Nombre', 'Imagen', 'Direccion', 'RUC'];
 
   tiendas: TiendaDTO[] = [];
 
@@ -38,7 +39,7 @@ export class StorePageComponent implements OnInit {
         this.data = this.tiendas.map(tienda => ({
           id: tienda.id,
           nombre: tienda.nombre,
-          'ruta imagen': tienda.rutaImagen,
+          imagen: tienda.rutaImagen,
           direccion: tienda.direccion,
           ruc: tienda.ruc
         }));

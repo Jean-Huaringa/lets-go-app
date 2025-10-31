@@ -68,7 +68,8 @@
             [pageSize]="pageSize" 
             [totalElements]="totalElements" 
             (onPageChange)="cambiarPagina($event)"
-            [sePuedeEditar]="false">
+            [sePuedeEditar]="false"
+            [sePuedeEliminar]="false">
         </app-table>
     } @else {
         <h2>Cargando...</h2>

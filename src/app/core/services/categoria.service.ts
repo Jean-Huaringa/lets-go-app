@@ -12,7 +12,7 @@ export class CategoriaService {
   private http = inject(HttpClient);
 
   obtenerCategorias(): Observable<SuccessResponse<PaginacionResponse<CategoriaDTO>>> {
-    return this.http.get<SuccessResponse<PaginacionResponse<CategoriaDTO>>>(`${this.apiUrl}/categorias`);
+    return this.http.get<SuccessResponse<PaginacionResponse<CategoriaDTO>>>(`${this.apiUrl}/categorias?page=0&size=1000`);
   }
 
   obtenerCategoriasActivas(): Observable<SuccessResponse<PaginacionResponse<CategoriaDTO>>> {

@@ -1,5 +1,5 @@
 <div class="contenido">
-  <h1>Crear Tienda</h1>
+  <h1>Actualizar Tienda</h1>
 
   <form [formGroup]="form">
     <div>
@@ -23,53 +23,38 @@
     </div>
 
     <div>
-      <label for="ubicacion">Ubicación:</label>
-      <input id="ubicacion" formControlName="ubicacion" />
-    </div>
-
-    <div>
-      <label for="telefono">Teléfono:</label>
-      <input id="telefono" formControlName="telefono" />
-    </div>
-
-    <div>
-      <label for="mail">Correo Electrónico:</label>
-      <input id="mail" formControlName="mail" />
-    </div>
-
-    <div>
       <label for="imagen">Imagen URL:</label>
       <input id="imagen" formControlName="rutaImagen" />
     </div>
 
     <div>
-      <label for="paisId">País:</label>
-      <select id="paisId" formControlName="idPais">
+      <label for="idPais">País:</label>
+      <select id="idPais" formControlName="idPais">
         <option *ngFor="let pais of paises" [value]="pais.id">{{ pais.nombre }}</option>
       </select>
     </div>
 
     <div>
-      <label for="departamentoId">Departamento:</label>
-      <select id="departamentoId" formControlName="idDepartamento">
+      <label for="idDepartamento">Departamento:</label>
+      <select id="idDepartamento" formControlName="idDepartamento">
         <option *ngFor="let departamento of departamentos" [value]="departamento.id">{{ departamento.nombre }}</option>
       </select>
     </div>
 
     <div>
-      <label for="provinciaId">Provincia:</label>
-      <select id="provinciaId" formControlName="idProvincia">
+      <label for="idProvincia">Provincia:</label>
+      <select id="idProvincia" formControlName="idProvincia">
         <option *ngFor="let provincia of provincias" [value]="provincia.id">{{ provincia.nombre }}</option>
       </select>
     </div>
 
     <div>
-      <label for="distritoId">Distrito:</label>
-      <select id="distritoId" formControlName="idDistrito">
+      <label for="idDistrito">Distrito:</label>
+      <select id="idDistrito" formControlName="idDistrito">
         <option *ngFor="let distrito of distritos" [value]="distrito.id">{{ distrito.nombre }}</option>
       </select>
     </div>
 
-    <button type="submit" (click)="crearTienda()">Crear Tienda</button>
+    <button type="submit" (click)="actualizarTienda()">Actualizar Tienda</button>
   </form>
 </div>

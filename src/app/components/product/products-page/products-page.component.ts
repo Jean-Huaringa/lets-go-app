@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { TableComponent } from "../../table/table.component";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-products-page',
-  imports: [TableComponent],  // Asegúrate de que TableComponent esté correctamente importado y registrado en tu módulo
+  imports: [TableComponent, RouterLink],  // Asegúrate de que TableComponent esté correctamente importado y registrado en tu módulo
   templateUrl: './products-page.component.html',
   styleUrls: ['./products-page.component.css']  // Se debe usar styleUrls, no styleUrl
 })

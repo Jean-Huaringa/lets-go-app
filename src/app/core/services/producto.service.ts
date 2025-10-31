@@ -11,8 +11,8 @@ export class ProductoService {
   private apiUrl = 'http://localhost:8080/product-app/api';
   private http = inject(HttpClient);
 
-  obtenerProductos(): Observable<SuccessResponse<PaginacionResponse<ProductoDTO>>> {
-    return this.http.get<SuccessResponse<PaginacionResponse<ProductoDTO>>>(`${this.apiUrl}/productos`);
+  obtenerProductos(page: number = 0, size: number = 10): Observable<SuccessResponse<PaginacionResponse<ProductoDTO>>> {
+    return this.http.get<SuccessResponse<PaginacionResponse<ProductoDTO>>>(`${this.apiUrl}/productos?page=${page}&size=${size}`);
   }
 
   obtenerProductosActivos(paginacion: string): Observable<SuccessResponse<PaginacionResponse<ProductoDTO>>> {

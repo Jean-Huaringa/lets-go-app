@@ -1,88 +1,70 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ProductoService } from '../../../core/services/producto.service';
 import { ProductoDTO } from '../../../core/model/producto.interface';
 import { CommonModule } from '@angular/common';
 import { ProductFormComponent } from '../product-form/product-form.component';
+import { TableComponent } from "../../table/table.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-producto-list',
   standalone: true,
   templateUrl: './producto-list.component.html',
   styleUrls: ['./producto-list.component.css'],
-  imports: [CommonModule, ProductFormComponent]
+  imports: [CommonModule, TableComponent, RouterLink]
 })
 export class ProductoListComponent implements OnInit {
+  private productoService = inject(ProductoService);
+
+  columnas = ['Id', 'Img', 'Nombre', 'Descripcion', 'Precio', 'Categoria', 'Subcategoria', 'Material', 'Marca'];
+
   productos: ProductoDTO[] = [];
-  cargando = true;
-  error = '';
 
-  selectedProduct: ProductoDTO | null = null;
-  showForm = false;
+  productosData: any[] = [];
 
-  constructor(private productoService: ProductoService) {}
+  currentPage = 0;
+  pageSize = 10;
+  totalElements = 0;
+  loading = false;
 
   ngOnInit(): void {
-    this.listarProductos();
+    this.cargarProductos();
   }
 
-  listarProductos(): void {
-    this.cargando = true;
-    this.productoService.obtenerProductos().subscribe({
+  cargarProductos(): void {
+    this.loading = true;
+    this.productoService.obtenerProductos(this.currentPage, this.pageSize).subscribe({
       next: (res) => {
-        this.productos = res.response?.content || [];
-        this.cargando = false;
+        this.productos = res.response.content;
+        this.totalElements = res.response.totalElements;
+        this.productosData = this.productos.map(producto => ({
+          id: producto.id,
+          nombre: producto.nombre,
+          descripcion: producto.descripcion,
+          precio: "S/. " + producto.precio,
+          categoria: producto.categoria,
+          subcategoria: producto.subcategoria,
+          material: producto.material,
+          marca: producto.marca
+        }));
+        console.log('Productos cargados:', this.productos);
       },
       error: (err) => {
-        console.error(err);
-        this.error = 'Error al cargar los productos.';
-        this.cargando = false;
+        console.error('Error al cargar los productos', err);
+      },
+      complete: () => {
+        this.loading = false;
       }
     });
   }
 
-  openForm(product: ProductoDTO | null = null) {
-    this.selectedProduct = product;
-    this.showForm = true;
+  cambiarPagina(pagina: number): void {
+    this.currentPage = pagina;
+    this.cargarProductos();
   }
 
-  handleSave(productData: any) {
-  if (this.selectedProduct) {
-    // Actualizar
-    const updateData = {...productData, isEnabled: true}; // agregar isEnabled
-    this.productoService.actualizarProducto(this.selectedProduct.id, updateData).subscribe({
-      next: () => {
-        this.listarProductos();
-        this.showForm = false;
-        this.selectedProduct = null;
-      },
-      error: (err) => console.error('Error al actualizar', err)
-    });
-  } else {
-    // Crear
-    this.productoService.crearProducto(productData).subscribe({
-      next: () => {
-        this.listarProductos();
-        this.showForm = false;
-      },
-      error: (err) => console.error('Error al crear', err)
-    });
+  get totalPages(): number {
+    return Math.ceil(this.totalElements / this.pageSize);
   }
-}
-
-
- eliminarProducto(id: number): void {
-  if (confirm('¿Seguro que deseas eliminar este producto?')) {
-    this.productoService.eliminarProducto(id).subscribe({
-      next: (res) => {
-        console.log('Producto eliminado con éxito:', res);
-        this.listarProductos();
-      },
-      error: (err) => {
-        console.error('Error al eliminar producto:', err);
-        alert('Hubo un error al eliminar el producto.');
-      }
-    });
-  }
-}
 
 }

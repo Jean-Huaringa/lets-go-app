@@ -1,4 +1,4 @@
-import { Component, Inject, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { TiendaService } from '../../../core/services/tienda.service';
 import { PaisService } from '../../../core/services/pais.service';
@@ -9,21 +9,24 @@ import { PaisDTO } from '../../../core/model/pais.interface';
 import { DepartamentoDTO } from '../../../core/model/departamento.interface';
 import { ProvinciaDTO } from '../../../core/model/provincia.interface';
 import { DistritoDTO } from '../../../core/model/distrito.interface';
-import { TiendaCreacionDTO } from '../../../core/model/tienda.interface';
+import { TiendaActualizarDTO } from '../../../core/model/tienda.interface';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-crear-tienda',
+  selector: 'app-actualizar-tienda',
   imports: [
     ReactiveFormsModule,
     CommonModule
   ],
-  templateUrl: './crear-tienda.component.html',
-  styleUrl: './crear-tienda.component.css'
+  templateUrl: './actualizar-tienda.component.html',
+  styleUrl: './actualizar-tienda.component.css'
 })
-export class CrearTiendaComponent implements OnInit {
+export class ActualizarTiendaComponent {
+  id: string | null = null;
+
   private fb = inject(FormBuilder);
+  private route = inject(ActivatedRoute);
   private router = inject(Router);
   private tiendaService = inject(TiendaService);
   private paisService = inject(PaisService);
@@ -48,32 +51,45 @@ export class CrearTiendaComponent implements OnInit {
     idPais: [0],
     idDepartamento: [0],
     idProvincia: [0],
-    idDistrito: [0]
+    idDistrito: [0],
+    enabled: [true]
   });
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get('id');
+    const tienda = this.tiendaService.obtenerTiendaPorId(Number(this.id)).subscribe({
+      next: (res) => {
+        const tiendaData = res.response;
+        console.log('Datos de la tienda obtenidos:', tiendaData);
+        this.form.patchValue(tiendaData);
+      },
+      error: (err) => {
+        console.error('Error al cargar la tienda', err);
+      }
+    });
+
     this.cargarPaises();
     this.cargarDepartamentos();
     this.cargarProvincias();
     this.cargarDistritos();
   }
 
-  crearTienda() {
+  actualizarTienda() {
     if (this.form.invalid) {
       return;
     }
 
-    const tienda = this.form.value as TiendaCreacionDTO;
+    const tienda = this.form.value as TiendaActualizarDTO;
 
     console.log(tienda)
 
-    this.tiendaService.crearTienda(tienda).subscribe({
+    this.tiendaService.actualizarTienda(Number(this.id), tienda).subscribe({
       next: (res) => {
-        console.log('Tienda creada con éxito:', res);
+        console.log('Tienda actualizada con éxito:', res);
         this.router.navigate(['/tiendas']);
       },
       error: (err) => {
-        console.error('Error al crear la tienda', err);
+        console.error('Error al actualizar la tienda', err);
       }
     });
   }
