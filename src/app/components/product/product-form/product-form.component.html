@@ -1,17 +1,35 @@
-<div class="container">
-  <h2 class="titulo">{{ product ? 'Editar Producto' : 'Nuevo Producto' }}</h2>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="nombre" placeholder="Nombre">
+  <input type="text" formControlName="descripcion" placeholder="Descripción">
+  <input type="number" formControlName="precio" placeholder="Precio">
 
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div class="form-grid">
-      <input type="text" formControlName="nombre" placeholder="Nombre">
-      <input type="text" formControlName="material" placeholder="Material">
-      <textarea formControlName="descripcion" placeholder="Descripción"></textarea>
-      <input type="number" formControlName="precio" placeholder="Precio">
-    </div>
+  <select formControlName="idCategoria">
+    <option value="">Selecciona categoría</option>
+    <option *ngFor="let c of categorias" [value]="c.id">{{c.nombre}}</option>
+  </select>
 
-    <div class="form-actions">
-      <button type="submit" class="btn fill">{{ product ? 'Actualizar' : 'Agregar' }}</button>
-      <button type="button" class="btn empty" (click)="onClose()">Cancelar</button>
-    </div>
-  </form>
-</div>
+  <select formControlName="idSubcategoria">
+    <option value="">Selecciona subcategoría</option>
+    <option *ngFor="let s of subcategorias" [value]="s.id">{{s.nombre}}</option>
+  </select>
+
+  <select formControlName="idBranch">
+    <option value="">Selecciona sucursal</option>
+    <option *ngFor="let b of branches" [value]="b.id">{{b.nombre}}</option>
+  </select>
+
+  <select formControlName="idMaterial">
+    <option value="">Selecciona material</option>
+    <option *ngFor="let m of materiales" [value]="m.id">{{m.nombre}}</option>
+  </select>
+
+  <select formControlName="idMarca">
+    <option value="">Selecciona marca</option>
+    <option *ngFor="let m of marcas" [value]="m.id">{{m.nombre}}</option>
+  </select>
+
+  <div>
+    <button type="submit">{{ product ? 'Actualizar' : 'Agregar' }}</button>
+    <button type="button" (click)="onClose()">Cancelar</button>
+  </div>
+</form>

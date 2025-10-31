@@ -46,26 +46,29 @@ export class ProductoListComponent implements OnInit {
   }
 
   handleSave(productData: any) {
-    if (this.selectedProduct) {
-   
-      this.productoService.actualizarProducto(this.selectedProduct.id, productData).subscribe({
-        next: () => {
-          this.listarProductos();   
-          this.showForm = false;      
-          this.selectedProduct = null; 
-        },
-        error: (err) => console.error('Error al actualizar producto', err)
-      });
-
-      this.productoService.crearProducto(productData).subscribe({
-        next: () => {
-          this.listarProductos();      
-          this.showForm = false;       
-        },
-        error: (err) => console.error('Error al crear producto', err)
-      });
-    }
+  if (this.selectedProduct) {
+    // Actualizar
+    const updateData = {...productData, isEnabled: true}; // agregar isEnabled
+    this.productoService.actualizarProducto(this.selectedProduct.id, updateData).subscribe({
+      next: () => {
+        this.listarProductos();
+        this.showForm = false;
+        this.selectedProduct = null;
+      },
+      error: (err) => console.error('Error al actualizar', err)
+    });
+  } else {
+    // Crear
+    this.productoService.crearProducto(productData).subscribe({
+      next: () => {
+        this.listarProductos();
+        this.showForm = false;
+      },
+      error: (err) => console.error('Error al crear', err)
+    });
   }
+}
+
 
  eliminarProducto(id: number): void {
   if (confirm('¿Seguro que deseas eliminar este producto?')) {
