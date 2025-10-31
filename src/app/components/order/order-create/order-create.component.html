@@ -1,0 +1,59 @@
+<div class="container">
+  <h2>Crear Boleta</h2>
+  <form (ngSubmit)="crearBoleta()">
+    <div>
+      <label for="nombreCliente">Nombre del Cliente</label>
+      <input type="text" id="nombreCliente" [(ngModel)]="boleta.nombreCliente" name="nombreCliente" placeholder="Ingrese el nombre del cliente" required>
+    </div>
+
+    <div>
+      <label for="direccion">Dirección</label>
+      <input type="text" id="direccion" [(ngModel)]="boleta.direccion" name="direccion" placeholder="Ingrese la dirección" required>
+    </div>
+
+    <div>
+      <label for="tipoTarjeta">Tipo de Tarjeta</label>
+      <select id="tipoTarjeta" [(ngModel)]="boleta.tipoTarjeta" name="tipoTarjeta" required>
+        <option value="">Seleccione</option>
+        <option value="Visa">Visa</option>
+        <option value="MasterCard">MasterCard</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="productos">Productos</label>
+      <div class="input-group">
+        <select id="productos" [(ngModel)]="productoSeleccionado" name="productos">
+          <option *ngFor="let producto of productos" [value]="producto.id">{{ producto.nombre }} - {{ producto.precio | currency }}</option>
+        </select>
+        <button type="button" (click)="agregarProducto()">Agregar</button>
+      </div>
+    </div>
+
+    <div style="grid-column: span 2;">
+      <h5>Productos Agregados</h5>
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Unidades</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transaccion of boleta.transacciones">
+            <td>{{ obtenerNombreProducto(transaccion.idProducto) }}</td>
+            <td>{{ transaccion.unidades }}</td>
+            <td>
+              <button type="button" (click)="eliminarProducto(transaccion)" class="btn-danger">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="grid-column: span 2; text-align: right;">
+      <button type="submit">Crear Boleta</button>
+    </div>
+  </form>
+</div>

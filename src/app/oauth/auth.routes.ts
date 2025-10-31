@@ -16,7 +16,7 @@ import { BienvenidaComponent } from "./bienvenida/bienvenida.component";
 import { CambiarClaveComponent } from "./cambiar-clave/cambiar-clave.component";
 
 export const routes: Routes = [
-  { path: 'register', component: RegisterComponent },
+  { path: 'registrarme', component: RegisterComponent },
   { path: 'landing', component: LandingComponent },
   { path: 'auth-callback', component: CallbackComponent },
   { path: 'bienvenida', component: BienvenidaComponent },

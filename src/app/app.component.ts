@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { authConfig } from './oauth/auth.config';
 import { filter } from 'rxjs/operators';
 
-import { TableComponent } from "./components/table/table.component";
 import { MenuBarComponent } from "./components/menu-bar/menu-bar.component";
 
 
@@ -35,18 +34,9 @@ export class AppComponent {
     )
     .subscribe(_ => {
       console.log('¡Token recibido! Redirigiendo a la página principal...');
-      this.router.navigate(['/auth/bienvenida']); 
+      this.router.navigate(['/boletas']); 
     });
   }
 
   title = 'lets-go';
-
-  columnas = ['Nombre', 'Edad', 'Ciudad'];
-  
-  data = [
-    { nombre: 'Carlos', edad: 28, ciudad: 'Lima' },
-    { nombre: 'María', edad: 32, ciudad: 'Cusco' },
-    { nombre: 'José', edad: 25, ciudad: 'Trujillo' },
-    { nombre: 'Lucía', edad: 30, ciudad: 'Arequipa' }
-  ];
 }

@@ -15,11 +15,13 @@
                             <use href="../icons/icon.svg#eyes-icon"></use>
                         </svg>
                     </button>
-                    <button>
-                        <svg>
-                            <use href="../icons/icon.svg#pencil-icon"></use>
-                        </svg>
-                    </button>
+                    @if (sePuedeEditar) {
+                        <button>
+                            <svg>
+                                <use href="../icons/icon.svg#pencil-icon"></use>
+                            </svg>
+                        </button>
+                    }
                     <button>
                         <svg>
                             <use href="../icons/icon.svg#trash-icon"></use>
@@ -30,9 +32,13 @@
         </tbody>
     </table>
 
-    <div class="pagination">
-        <button class="btn fill">+</button>
-        <button class="btn empty">1</button>
-        <button class="btn fill">-</button>
+    <div class="pagination" *ngIf="enablePagination">
+        <button class="btn" [disabled]="currentPage === 0" (click)="goToPage(0)">Primera</button>
+        <button class="btn" [disabled]="currentPage === 0" (click)="goToPage(currentPage - 1)">Anterior</button>
+        <span>Página {{ currentPage + 1 }} de {{ totalPages }}</span>
+        <button class="btn" [disabled]="currentPage + 1 >= totalPages"
+            (click)="goToPage(currentPage + 1)">Siguiente</button>
+        <button class="btn" [disabled]="currentPage + 1 >= totalPages"
+            (click)="goToPage(totalPages - 1)">Última</button>
     </div>
 </div>

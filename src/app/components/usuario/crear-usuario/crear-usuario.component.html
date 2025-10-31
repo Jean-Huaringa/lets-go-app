@@ -1,0 +1,77 @@
+<div class="contenido">
+  <h2 class="card-title mb-3">Crear usuario</h2>
+
+  <form [formGroup]="form" (ngSubmit)="crearUsuario()">
+    <div>
+      <label for="nombre">Nombre</label>
+      <input id="nombre" type="text" formControlName="nombre" />
+    </div>
+
+    <div>
+      <label for="apellido">Apellido</label>
+      <input id="apellido" type="text" formControlName="apellido" />
+    </div>
+
+    <div>
+      <label for="tipoDocumento">Tipo de documento</label>
+      <input id="tipoDocumento" type="text" formControlName="tipoDocumento" />
+    </div>
+
+    <div class="col-md-8">
+      <label for="nmrDocumento">Número de documento</label>
+      <input id="nmrDocumento" type="text" formControlName="nmrDocumento" />
+    </div>
+
+    <div>
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" />
+    </div>
+
+    <div>
+      <label for="telefono">Teléfono</label>
+      <input id="telefono" type="text" formControlName="telefono" />
+    </div>
+
+    <div>
+      <label for="idRol">Rol</label>
+      <select id="idRol" formControlName="idRol">
+        <option [value]="0">Seleccione un rol</option>
+        <option *ngFor="let rol of roles" [value]="rol.id">{{ rol.nombre }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="idPais">País</label>
+      <select id="idPais" formControlName="idPais">
+        <option [value]="0">Seleccione un país</option>
+        <option *ngFor="let pais of paises" [value]="pais.id">{{ pais.nombre }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="idDepartamento">Departamento</label>
+      <select id="idDepartamento" formControlName="idDepartamento">
+        <option [value]="0">Seleccione un departamento</option>
+        <option *ngFor="let departamento of departamentos" [value]="departamento.id">{{ departamento.nombre }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="idProvincia">Provincia</label>
+      <select id="idProvincia" formControlName="idProvincia">
+        <option [value]="0">Seleccione una provincia</option>
+        <option *ngFor="let provincia of provincias" [value]="provincia.id">{{ provincia.nombre }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="idDistrito">Distrito</label>
+      <select id="idDistrito" formControlName="idDistrito">
+        <option [value]="0">Seleccione un distrito</option>
+        <option *ngFor="let distrito of distritos" [value]="distrito.id">{{ distrito.nombre }}</option>
+      </select>
+    </div>
+
+    <button [disabled]="form.invalid" type="submit">Crear usuario</button>
+  </form>
+</div>

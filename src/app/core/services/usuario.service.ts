@@ -12,8 +12,8 @@ export class UsuarioService {
   private apiUrl = 'http://localhost:8080/user-app/api';
   private http = inject(HttpClient);
 
-  obtenerUsuarios(): Observable<SuccessResponse<PaginacionResponse<UsuarioDTO>>> {
-    return this.http.get<SuccessResponse<PaginacionResponse<UsuarioDTO>>>(`${this.apiUrl}/usuarios`);
+  obtenerUsuarios(page: number = 0, size: number = 10): Observable<SuccessResponse<PaginacionResponse<UsuarioDTO>>> {
+    return this.http.get<SuccessResponse<PaginacionResponse<UsuarioDTO>>>(`${this.apiUrl}/usuarios?page=${page}&size=${size}`);
   }
 
   obtenerUsuariosActivos(): Observable<SuccessResponse<PaginacionResponse<UsuarioDTO>>> {
